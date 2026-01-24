@@ -1,0 +1,15 @@
+# Dependency
+node_modules/
+.DS_Store
+
+# Enviroment Variables (RAHASIA)
+.env
+.env.local
+.env.production
+
+# Docker data (Jika MySQL menyimpan data di folder lokal)
+mysql_data/
+
+# Build files
+dist/
+build/

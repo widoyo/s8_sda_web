@@ -1,0 +1,49 @@
+services:
+  db:
+    image: mysql:8.0  
+    container_name: mysql_warisan
+    restart: always
+    environment:
+      MYSQL_DATABASE: nama_db_anda
+      MYSQL_ROOT_PASSWORD: password_rahasia
+      MYSQL_USER: user_lokal
+      MYSQL_PASSWORD: password_lokal
+    ports:
+      - "3306:3306"
+    volumes:
+      # Data database akan disimpan di NVMe (via OrbStack)
+      - mysql_data:/var/lib/mysql
+      - ./backend:/app
+      - /app/node_modules
+
+  backend:
+    build: ./backend
+    container_name: backend_warisan
+    restart: always
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: nama_db_anda
+      DB_USER: user_lokal
+      DB_PASSWORD: password_lokal
+    ports:
+      - "8000:3000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_warisan
+    ports:
+      - "127.0.0.1:5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_HOST=0.0.0.0
+    stdin_open: true
+    tty: true
+
+volumes:
+  mysql_data:
