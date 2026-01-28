@@ -1,8 +1,9 @@
+name: s8_websda_react
 services:
   db:
     image: mysql:8.0  
     container_name: mysql_warisan
-    restart: always
+    restart: no
     environment:
       MYSQL_DATABASE: nama_db_anda
       MYSQL_ROOT_PASSWORD: password_rahasia
@@ -19,7 +20,9 @@ services:
   backend:
     build: ./backend
     container_name: backend_warisan
-    restart: always
+    restart: no
+    env_file:
+      - ./backend/.env
     environment:
       DB_HOST: db
       DB_PORT: 3306
@@ -32,15 +35,18 @@ services:
       - db
 
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      args:
+        - NODE_ENV=${APP_ENV}
     container_name: frontend_warisan
     ports:
-      - "127.0.0.1:5173:5173"
+      - "${FRONTEND_PORT_MAPPING}"
     volumes:
       - ./frontend:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=${APP_ENV}
       - VITE_HOST=0.0.0.0
     stdin_open: true
     tty: true
