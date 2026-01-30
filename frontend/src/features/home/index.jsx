@@ -63,9 +63,9 @@ const HomePage = () => {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <section>
+      <section className="max-w-5xl mx-auto px-4">
         {beritaDataHighlighted?.length > 0 ? (
-          <Carousel autoSlide={true} interval={5000} className="w-full">
+          <Carousel autoSlide={true} interval={5000} className="w-sm">
             <CarouselContent className="-ml-1">
               {beritaDataHighlighted.map((item, index) => (
                 <CarouselItem key={index} className="pl-1 relative">
@@ -79,7 +79,7 @@ const HomePage = () => {
                     <img
                       src={item.img}
                       alt={item.title}
-                      className="w-full h-[600px] object-cover"
+                      className="w-sm h-[600px] object-cover"
                     />
                     <div className="absolute inset-0 flex flex-col justify-end">
                       <h1 className="min-w-96 w-fit text-xl text-white bg-indigo p-5 rounded-tr-md">

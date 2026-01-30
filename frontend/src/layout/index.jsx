@@ -46,12 +46,16 @@ const LayoutUser = () => {
               label: "Profil",
               submenu: [
                 {
-                  path: "/tugas-fungsi",
-                  label: "Tugas dan Fungsi",
-                },
-                {
                   path: "/struktur-organisasi",
                   label: "Struktur Organisasi",
+                },
+                {
+                  path: "/tugas-fungsi",
+                  label: "Informasi Organisasi",
+                },
+                {
+                  path: "/profil-pejabat",
+                  label: "Informasi Pejabat",
                 },
                 {
                   path: "/sejarah",
@@ -137,6 +141,18 @@ const LayoutUser = () => {
                 {
                   path: "/berita",
                   label: "Berita",
+                },
+                {
+                  path: "/informasi-berkala",
+                  label: "Informasi Berkala",
+                },
+                {
+                  path: "/informasi-serta-merta",
+                  label: "Informasi Serta Merta",
+                },
+                {
+                  path: "/informasi-tersedia",
+                  label: "Informasi Tersedia",
                 },
                 {
                   path: "/peraturan",
