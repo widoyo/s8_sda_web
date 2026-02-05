@@ -5,6 +5,7 @@ import { SidebarItemType } from "./type";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../hooks/useToken";
+import { Link } from "react-router-dom";
 
 interface SidebarProps {
   header?: ReactNode;
@@ -49,6 +50,9 @@ const Sidebar: React.FC<SidebarProps> = ({
         <Button variant="outline" className="w-full" onClick={handleLogout}>
           Logout
         </Button>
+        <p>Informasi Publik</p>
+        <Link to="/admin/berita" className="flex items-center mb-6 ml-6">Berita</Link>
+        <Link to="/admin/peraturan" className="flex items-center mb-6 ml-6">Peraturan</Link>
 
         {items.map((item: SidebarItemType, index: number) => (
           <SidebarItem

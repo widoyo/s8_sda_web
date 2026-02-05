@@ -58,12 +58,12 @@ const LayoutUser = () => {
                   label: "Informasi Pejabat",
                 },
                 {
-                  path: "/sejarah",
-                  label: "Sejarah",
-                },
-                {
                   path: "/profil",
                   label: "Visi Misi",
+                },
+                {
+                  path: "/sejarah",
+                  label: "Sejarah",
                 },
                 {
                   path: "/pola-rencana",

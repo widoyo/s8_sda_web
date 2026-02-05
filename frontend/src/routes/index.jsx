@@ -43,6 +43,7 @@ import RpsdaAdmin from "../features/admin/rpsda";
 import PrediksiCuacaAdmin from "../features/admin/prediksi-cuaca";
 import RpsdaPage from "../features/rpsda";
 import PrediksiCuacaPage from "../features/prediksi-cuaca";
+import InformasiBerkalaPage from "../features/informasi-berkala";
 
 export const router = createBrowserRouter([
   {
@@ -133,6 +134,10 @@ export const router = createBrowserRouter([
         path: "/prediksi-cuaca",
         element: <PrediksiCuacaPage />,
       },
+      {
+        path: "/informasi-berkala",
+        element: <InformasiBerkalaPage />,
+      }
     ],
   },
   {
