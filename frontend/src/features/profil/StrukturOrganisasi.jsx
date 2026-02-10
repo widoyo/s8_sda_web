@@ -1,83 +1,41 @@
-import { useEffect, useState } from "react";
+import strukturorganisasi from '../../assets/struktur_organisasi.webp'; 
 
-import Card from "../../components/card";
-import { Hash } from "../../constants";
-import { getSO } from "../../services/struktur-organisasi/api";
-import { truncateText } from "../../utils/truncate-text";
-import { useBeritaData } from "../home/hooks/useBeritaData";
-import { useNavigate } from "react-router-dom";
-
-const StrukturOrganisasi = () => {
-  const navigate = useNavigate();
-  const { beritaData } = useBeritaData();
-
-  const [strukturOrganisasi, setStrukturOrganisasi] = useState(null);
-
-  useEffect(() => {
-    const fetchStrukturOrganisasi = async () => {
-      try {
-        const response = await getSO();
-        setStrukturOrganisasi(response.data); // Store the data in state
-      } catch (error) {
-        console.error("Error fetching Pola Rencana data:", error);
-      }
-    };
-
-    fetchStrukturOrganisasi();
-  }, []);
-
+const StrukturOrganisasi = () => { 
   return (
-    <div className="flex min-h-screen flex-col">
-      <img
-        className="w-full h-[50vh] md:h-[60vh] object-cover"
-        src="https://mediabbwssviii.sgp1.cdn.digitaloceanspaces.com/image/WhatsApp%20Image%202024-10-25%20at%2015.10.15.jpeg"
-        alt="Call center picture"
-      />
+    <div className="max-w-7xl mx-auto px-4 py-16 bg-white">
+      {/* Header Halaman */}
+      <div className="text-center mb-16">
+        <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
+          Struktur Organisasi
+        </h1>
+        <div className="h-1 w-20 bg-blue-600 mx-auto mb-4"></div>
+        <p className="text-gray-500 text-lg">
+          Balai Besar Wilayah Sungai Sumatera VIII
+        </p>
+      </div>
 
-      <section className="flex flex-col lg:flex-row p-10">
-        <div className="flex flex-col lg:w-3/4 w-full gap-5 px-10 mb-10">
-          <h1 className="text-2xl font-semibold">Struktur Organisasi</h1>
-          <div className="border-t w-20 border-indigo " />
-          {strukturOrganisasi ? (
-            <img
-              className="w-full object-cover"
-              src={strukturOrganisasi.img}
-              alt="Struktur Organisasi picture"
+      {/* Kontainer Gambar Struktur */}
+      <div className="flex justify-center">
+        <div className="w-full lg:w-11/12 bg-gray-50 p-4 rounded-3xl shadow-inner border border-gray-100 group">
+          <a 
+            href={strukturorganisasi} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            title="Klik untuk memperbesar"
+            className="block cursor-zoom-in overflow-hidden rounded-2xl bg-white shadow-lg"
+          >
+            <img 
+              src={strukturorganisasi} 
+              alt="Struktur Organisasi BBWS Sumatera VIII" 
+              className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+              loading="lazy"
             />
-          ) : (
-            <p>Loading Struktur Organisasi...</p>
-          )}
+          </a>
+          <p className="mt-4 text-center text-sm text-gray-400 italic">
+            * Klik gambar untuk melihat dalam ukuran penuh
+          </p>
         </div>
-        <div className="flex flex-col space-y-5 border border-indigo rounded-sm mx-auto lg:w-1/3 w-full h-fit">
-          <h1 className="text-2xl border-b border-b-indigo p-2 bg-indigo text-white">
-            Berita Terkini
-          </h1>
-          <div className="flex flex-col ">
-            {beritaData.map((item, index) => (
-              <Card
-                key={index}
-                shadow={true}
-                rounded={true}
-                className="transition-transform transform hover:scale-95 hover:shadow-lg cursor-pointer"
-                onClick={() => navigate(`/berita?id=${item.id}${Hash.DETAIL}`)}
-              >
-                <div className="flex p-2">
-                  <img
-                    src={item.img}
-                    alt={"photo"}
-                    className="h-36 w-36 object-cover"
-                  />
-                  <div className="p-4 space-y-2">
-                    <h1 className="text-md text-indigo">
-                      {truncateText(item.title, 100)}
-                    </h1>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 };
