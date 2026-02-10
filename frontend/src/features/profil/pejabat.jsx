@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Import gambar
 import fotoKabalai from '../../assets/pejabat/ka_balai.webp'; 
 import fotoPejabat2 from '../../assets/pejabat/kabid_kpisda.webp';
@@ -12,7 +10,7 @@ const ProfilePejabat = () => {
     { id: 2, nama: "Rifki Maulana ST., MT.", jabatan: "KaBid Keterpaduan Pembangunan Infrastruktur SDA", foto: fotoPejabat2 },
     { id: 3, nama: "Antonius Suryono S.H., ST., M.MT.", jabatan: "Kabid Operasi dan Pemeliharaan", foto: fotoPejabat3 },
     { id: 4, nama: "Hendra Yuldi ST. MT.", jabatan: "Kabid Pelaksanaan Jaringan Pemanfaatan Air", foto: fotoPejabat4 },
-    { id: 5, nama: "Darwismai ST. MPSDA", jabatan: "Kabid Pelaksanaan Jaringan Sumber Air", foto: fotoPejabat5 },
+    { id: 5, nama: "Danwismai ST. MPSDA", jabatan: "Kabid Pelaksanaan Jaringan Sumber Air", foto: fotoPejabat5 },
   ];
 
   return (

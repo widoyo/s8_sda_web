@@ -1,81 +1,106 @@
-import { useEffect, useState } from "react";
-
-import Card from "../../components/card";
-import { Hash } from "../../constants";
-import { getTugasFungsi } from "../../services/tugas-fungsi/api";
-import { truncateText } from "../../utils/truncate-text";
-import { useBeritaData } from "../home/hooks/useBeritaData";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
 
 const TugasFungsi = () => {
-  const navigate = useNavigate();
-  const { beritaData } = useBeritaData();
+  const [activeTab, setActiveTab] = useState('tugas');
 
-  const [tugasFungsi, setTugasFungsi] = useState(null);
+  const daftarTugas = [
+    "Penyusunan pola dan rencana pengelolaan sumber daya air pada wilayah Sungai.",
+    "Penyusunan rencana dan program, studi kelayakan dan perencanaan teknis/desain/pengembangan sumber daya air.",
+    "Persiapan, penyusunan rencana dan dokumen pengadaan barang dan jasa.",
+    "Pelaksanaan pengadaan barang dan jasa serta penetapan pemenang selaku Unit Layanan Pengadaan (ULP).",
+    "Pengendalian dan pengawasan konstruksi pelaksanaan Pembangunan sumber daya air.",
+    "Penyusunan rencana dan pelaksanaan pengelolaan Kawasan lindung sumber air pada wilayah Sungai.",
+    "Pengelolaan sumber daya air (Konservasi, Pendayagunaan, & Pengendalian Daya Rusak).",
+    "Pengelolaan sistem hidrologi.",
+    "Pengelolaan sistem informasi sumber daya air.",
+    "Pelaksanaan operasi dan pemeliharaan sumber daya air.",
+    "Bimbingan teknis pengelolaan SDA kewenangan provinsi/kabupaten/kota.",
+    "Penyiapan rekomendasi teknis perizinan SDA.",
+    "Fasilitasi kegiatan TKPSDA pada wilayah Sungai.",
+    "Pemberdayaan Masyarakat dalam pengelolaan SDA.",
+    "Penyusunan laporan akuntansi keuangan dan BMN.",
+    "Pelaksanaan pemungutan dan penggunaan BJPSDA.",
+    "Urusan tata usaha, rumah tangga balai, dan koordinasi instansi."
+  ];
 
-  useEffect(() => {
-    const fetchTugasFungsi = async () => {
-      try {
-        const response = await getTugasFungsi();
-        setTugasFungsi(response.data.content); // Store the data in state
-      } catch (error) {
-        console.error("Error fetching Pola Rencana data:", error);
-      }
-    };
+  const daftarFungsi = [
+    "Penyusunan pola dan rencana pengelolaan SDA.",
+    "Penyusunan program dan rencana kegiatan pengelolaan SDA.",
+    "Pemantauan dan evaluasi penerapan pola pengelolaan SDA.",
+    "Studi kelayakan dan perencanaan teknis/desain SDA.",
+    "Pelaksanaan pengadaan barang dan jasa (ULP).",
+    "Penyelenggaraan sistem manajemen mutu dan SMK3.",
+    "Konservasi, pendayagunaan, dan pengendalian daya rusak air.",
+    "Pengelolaan drainase utama perkotaan.",
+    "Pengelolaan sistem hidrologi dan informasi SDA.",
+    "Operasi dan pemeliharaan SDA pada wilayah Sungai.",
+    "Bimbingan teknis pengelolaan SDA.",
+    "Penyusunan rekomendasi teknis izin penggunaan SDA.",
+    "Fasilitasi kegiatan TKPSDA.",
+    "Pemberdayaan Masyarakat.",
+    "Penyusunan laporan akuntansi keuangan dan BMN.",
+    "Pemungutan dan penggunaan BJPSDA.",
+    "Urusan tata usaha, rumah tangga, dan komunikasi publik.",
+    "Penyusunan perjanjian dan laporan kinerja balai.",
+    "Pemantauan, pengawasan, dan penyidikan tindak pidana bidang SDA."
+  ];
 
-    fetchTugasFungsi();
-  }, []);
   return (
-    <div className="flex min-h-screen flex-col">
-      <img
-        className="w-full h-[50vh] md:h-[60vh] object-cover"
-        src="https://mediabbwssviii.sgp1.cdn.digitaloceanspaces.com/image/WhatsApp%20Image%202024-10-25%20at%2015.11.43.jpeg"
-        alt="Call center picture"
-      />
+    <div className="max-w-5xl mx-auto px-4 py-16">
+      {/* Header Halaman */}
+      <div className="text-center mb-16">
+        <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
+          Tugas &amp; Fungsi Organisasi
+        </h1>
+        <div className="h-1 w-20 bg-blue-600 mx-auto mb-4"></div>
+      </div>
+      {/* Tombol Switcher */}
+      <div className="flex justify-center mb-12">
+        <div className="inline-flex p-1 bg-gray-100 rounded-xl shadow-inner">
+          <button
+            onClick={() => setActiveTab('tugas')}
+            className={`px-8 py-3 rounded-lg font-bold transition-all duration-300 ${
+              activeTab === 'tugas' ? 'bg-white text-blue-600 shadow-md' : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            TUGAS
+          </button>
+          <button
+            onClick={() => setActiveTab('fungsi')}
+            className={`px-8 py-3 rounded-lg font-bold transition-all duration-300 ${
+              activeTab === 'fungsi' ? 'bg-white text-blue-600 shadow-md' : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            FUNGSI
+          </button>
+        </div>
+      </div>
 
-      <section className="flex flex-col lg:flex-row p-10">
-        <div className="flex flex-col lg:w-3/4 w-full gap-5 px-10 mb-10">
-          <h1 className="text-2xl font-semibold">Tugas dan Fungsi</h1>
-          <div className="border-t w-20 border-indigo " />
-          {tugasFungsi ? (
-            <div
-              className="w-full object-cover"
-              dangerouslySetInnerHTML={{ __html: tugasFungsi }} // Render HTML content
-            />
-          ) : (
-            <p>Loading Tugas dan Fungsi...</p>
-          )}
-        </div>
-        <div className="flex flex-col space-y-5 border border-indigo rounded-sm mx-auto lg:w-1/3 w-full h-fit">
-          <h1 className="text-2xl border-b border-b-indigo p-2 bg-indigo text-white">
-            Berita Terkini
-          </h1>
-          <div className="flex flex-col ">
-            {beritaData.map((item, index) => (
-              <Card
+      {/* Konten Daftar */}
+      <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-500">
+        <div className="p-8 md:p-12">
+          <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center">
+            <span className="w-2 h-8 bg-blue-600 rounded-full mr-4"></span>
+            {activeTab === 'tugas' ? 'Tugas Utama Balai' : 'Fungsi Strategis Balai'}
+          </h2>
+          
+          <ul className="grid grid-cols-1 gap-4">
+            {(activeTab === 'tugas' ? daftarTugas : daftarFungsi).map((item, index) => (
+              <li 
                 key={index}
-                shadow={true}
-                rounded={true}
-                className="transition-transform transform hover:scale-95 hover:shadow-lg cursor-pointer"
-                onClick={() => navigate(`/berita?id=${item.id}${Hash.DETAIL}`)}
+                className="flex items-start p-4 rounded-xl hover:bg-blue-50 transition-colors duration-300 border border-transparent hover:border-blue-100 group"
               >
-                <div className="flex p-2">
-                  <img
-                    src={item.img}
-                    alt={"photo"}
-                    className="h-36 w-36 object-cover"
-                  />
-                  <div className="p-4 space-y-2">
-                    <h1 className="text-md text-indigo">
-                      {truncateText(item.title, 100)}
-                    </h1>
-                  </div>
-                </div>
-              </Card>
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold mr-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  {index + 1}
+                </span>
+                <p className="text-gray-700 leading-relaxed pt-1">
+                  {item}
+                </p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

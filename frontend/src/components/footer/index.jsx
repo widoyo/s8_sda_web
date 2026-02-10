@@ -229,7 +229,7 @@ const Footer = () => {
         {
           content: (
             <div>
-              Copyright 2025, Kementerian Pekerjaan Umum
+              Copyright 2026, Kementerian Pekerjaan Umum
               Republik Indonesia
             </div>
           ),
