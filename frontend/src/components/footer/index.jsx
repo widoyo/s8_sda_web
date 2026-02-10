@@ -1,6 +1,6 @@
-import * as React from "react";
 
 import logo from "../../assets/logo.png";
+import FlagCounter from "../FlagCounter";
 
 const Footer = () => {
   const styleFooter = "bg-indigo text-white p-4";
@@ -96,10 +96,10 @@ const Footer = () => {
                   <path
                     fill="none"
                     stroke="#fff"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                     d="M30,11H18c-3.9,0-7,3.1-7,7v12c0,3.9,3.1,7,7,7h12c3.9,0,7-3.1,7-7V18C37,14.1,33.9,11,30,11z"
                   ></path>
                   <circle cx="31" cy="16" r="1" fill="#fff"></circle>
@@ -111,10 +111,10 @@ const Footer = () => {
                     r="6"
                     fill="none"
                     stroke="#fff"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   ></circle>
                 </g>
               </svg>
@@ -155,9 +155,9 @@ const Footer = () => {
               >
                 <path
                   fill="#212121"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M38,42H10c-2.209,0-4-1.791-4-4V10c0-2.209,1.791-4,4-4h28	c2.209,0,4,1.791,4,4v28C42,40.209,40.209,42,38,42z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
                 <path
                   fill="#fff"
@@ -194,7 +194,7 @@ const Footer = () => {
               </svg>
             </div>
           ),
-        },
+        }
       ],
     },
   ];
@@ -257,6 +257,7 @@ const Footer = () => {
                   {item.content}
                 </div>
               ))}
+              <FlagCounter />
             </div>
           ))}
         </div>
