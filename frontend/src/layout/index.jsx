@@ -84,6 +84,11 @@ const LayoutUser = () => {
               label: "Publikasi",
               submenu: [
                 {
+                  path: "/majalah-bidar",
+                  label: "Majalah Bidar",
+                },
+
+                {
                   path: "https://pdsda.sda.pu.go.id/",
                   label: "WRDC",
                 },

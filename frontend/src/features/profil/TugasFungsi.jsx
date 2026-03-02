@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import StatikDialog from '../../components/StaticDialog';
 
 const TugasFungsi = () => {
   const [activeTab, setActiveTab] = useState('tugas');

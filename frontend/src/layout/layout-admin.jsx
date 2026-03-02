@@ -10,36 +10,12 @@ const LayoutAdmin = () => {
       label: "Dashboard",
     },
     {
-      path: "/admin/berita",
-      label: "Berita",
-    },
-    {
       path: "/admin/majalah",
       label: "Majalah",
     },
     {
-      path: "/admin/youtube",
-      label: "Youtube",
-    },
-    {
-      path: "/admin/banner",
-      label: "Banner",
-    },
-    {
-      path: "/admin/infografis",
-      label: "Infografis",
-    },
-    {
-      path: "/admin/gallery",
-      label: "Gallery",
-    },
-    {
       path: "/admin/layanan-terpadu",
       label: "Layanan Terpadu",
-    },
-    {
-      path: "/admin/struktur-organisasi",
-      label: "Struktur Organisasi",
     },
     {
       path: "/admin/pola-rencana",
@@ -52,22 +28,6 @@ const LayoutAdmin = () => {
     {
       path: "/admin/dipa",
       label: "Dipa",
-    },
-    {
-      path: "/admin/peraturan",
-      label: "Peraturan",
-    },
-    {
-      path: "/admin/pengumuman",
-      label: "Pengumuman",
-    },
-    {
-      path: "/admin/informasi",
-      label: "Informasi",
-    },
-    {
-      path: "/admin/geoportal",
-      label: "Geoportal",
     },
     {
       path: "/admin/rpsda",

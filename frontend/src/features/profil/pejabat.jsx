@@ -1,9 +1,12 @@
+import { useState } from 'react';
 // Import gambar
 import fotoKabalai from '../../assets/pejabat/ka_balai.webp'; 
 import fotoPejabat2 from '../../assets/pejabat/kabid_kpisda.webp';
 import fotoPejabat3 from '../../assets/pejabat/kabid_op2.webp';
 import fotoPejabat4 from '../../assets/pejabat/kabid_pjpa.webp';
 import fotoPejabat5 from '../../assets/pejabat/kabid_pjsa.webp';
+
+import StatikDialog from '../../components/StaticDialog';
 
 const ProfilePejabat = () => {
   const daftarPejabat = [
@@ -12,6 +15,15 @@ const ProfilePejabat = () => {
     { id: 4, nama: "Hendra Yuldi ST. MT.", jabatan: "Kabid Pelaksanaan Jaringan Pemanfaatan Air", foto: fotoPejabat4 },
     { id: 5, nama: "Danwismai ST. MPSDA", jabatan: "Kabid Pelaksanaan Jaringan Sumber Air", foto: fotoPejabat5 },
   ];
+
+  const [open, setOpen] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState(null);
+
+  const handleOpenModal = (person) => {
+    console.log("Membuka modal untuk:", person.nama);
+    setSelectedPerson(person);
+    setOpen(true);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 bg-white">
@@ -52,7 +64,7 @@ const ProfilePejabat = () => {
       {/* --- BARIS 2: PEJABAT LAINNYA (Grid 4 Kolom) --- */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {daftarPejabat.map((pejabat) => (
-          <div key={pejabat.id} className="group">
+          <div key={pejabat.id} className="group cursor-pointer" onClick={() => handleOpenModal(pejabat)}>
             <div className="relative overflow-hidden rounded-2xl bg-gray-200 shadow-lg aspect-[3/4]">
               <img
                 src={pejabat.foto}
@@ -73,6 +85,28 @@ const ProfilePejabat = () => {
           </div>
         ))}
       </div>
+      <StatikDialog
+        open={open}
+        onOpenChange={setOpen}
+        title={selectedPerson?.nama || ""}
+        description={selectedPerson?.position || ""}
+      >
+        {/* Children mengambil data dari selectedPerson */}
+        {selectedPerson && (
+          <div className="mt-4 space-y-3">
+            {/* Bisa tambahkan gambar kecil */}
+            <img 
+              src={selectedPerson.foto} 
+              alt={selectedPerson.nama}
+              className="w-20 h-20 rounded-full mx-auto object-cover"
+            />
+            
+            {/* Informasi tambahan */}
+            <p className="text-gray-700">{selectedPerson.bio}</p>
+            
+          </div>
+        )}
+      </StatikDialog>
     </div>
   );
 };

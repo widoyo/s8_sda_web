@@ -31,6 +31,7 @@ import ProtectedRoutes from "./protectedRoutes";
 import Publication from "../features/publication";
 import Sejarah from "../features/profil/Sejarah";
 import StrukturOrganisasi from "../features/profil/StrukturOrganisasi";
+import MajalahBidar from "../features/publication/MajalahBidar";
 import ProfilePejabat from "../features/profil/pejabat";
 import StrukturOrganisasiAdmin from "../features/admin/struktur-organisasi";
 import Tkpsda from "../features/tkpsda";
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
       {
         path: "/struktur-organisasi",
         element: <StrukturOrganisasi />,
+      },
+      {
+        path: "majalah-bidar",
+        element: <MajalahBidar />,
       },
       {
         path: "/profil-pejabat",

@@ -46,13 +46,33 @@ const Sidebar: React.FC<SidebarProps> = ({
       className={`${backgroundColor} flex flex-col gap-2 p-5 w-1/5  ${shadow} overflow-y-auto`}
     >
       {header}
-      <ul className={`space-y-2 font-medium ${textColor}`}>
-        <Button variant="outline" className="w-full" onClick={handleLogout}>
+        <Button variant="outline" className="w-full margin-b-6" onClick={handleLogout}>
           Logout
         </Button>
-        <p>Informasi Publik</p>
-        <Link to="/admin/berita" className="flex items-center mb-6 ml-6">Berita</Link>
-        <Link to="/admin/peraturan" className="flex items-center mb-6 ml-6">Peraturan</Link>
+      <ul className={`space-y-2 font-medium ${textColor}`}>
+        <li>
+          <p className="mb-3 mt-3 border-b-2">Home</p>
+          <Link to="/admin/banner" className="flex font-thin mb-3 ml-3">Banner</Link>
+          <Link to="/admin/pengumuman" className="flex font-thin mb-3 ml-3">Pengumuman</Link>
+          <Link to="/admin/geoportal" className="flex font-thin mb-3 ml-3">Geoportal</Link>
+          <Link to="/admin/infografis" className="flex font-thin mb-3 ml-3">Infografis</Link>
+          <Link to="/admin/youtube" className="flex font-thin mb-3 ml-3">Youtube</Link>
+          <Link to="/admin/gallery" className="flex font-thin mb-3 ml-3">Gallery Infrastruktur</Link>
+        </li>
+        <li>
+          <p className="mb-3 mt-3 border-b-2">Profil</p>
+          <Link to="/admin/struktur-organisasi" className="flex font-thin mb-3 ml-3">Struktur Organisasi</Link>
+          <Link to="/admin/tugas-fungsi" className="flex font-thin mb-3 ml-3">Tugas dan Fungsi</Link>
+          <Link to="/admin/pola-rencana" className="flex font-thin mb-3 ml-3">Pola dan Rencana</Link>
+          <Link to="/admin/dipa" className="flex font-thin mb-3 ml-3">DIPA</Link>
+        </li>
+        <li>
+          <p className="mb-3 mt-3 border-b-2">Informasi Publik</p>
+          <Link to="/admin/berita" className="flex font-thin mb-3 ml-3">Berita</Link>
+          <Link to="/admin/peraturan" className="flex font-thin mb-3 ml-3">Peraturan</Link>
+          <Link to="/admin/informasi" className="flex font-thin mb-3 ml-3">Informasi</Link>
+          <Link to="/admin/majalah" className="flex font-thin mb-3 ml-3">Majalah Bidar</Link>
+        </li>
 
         {items.map((item: SidebarItemType, index: number) => (
           <SidebarItem
